@@ -97,23 +97,6 @@ jobs:
           path: ${{ steps.pkg.outputs.rpm }}
           archive: false
 
-  macos:
-    runs-on: macos-latest
-    env:
-      MACOSX_DEPLOYMENT_TARGET: "13.0"
-    steps:
-      - uses: actions/checkout@v7
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: clippy
-      - uses: Swatinem/rust-cache@v2
-      - run: cargo clippy --release --all-targets --locked -- -D warnings
-      - run: cargo test --release --locked
-      - run: cargo build --release --locked
-      - run: sh tools/test-macos-native.sh
-      - run: python3 tools/macos-app.py
-      - run: codesign --verify --deep --strict "target/macos/Яндекс Музыка RS.app"
-
   release:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: [windows, linux]

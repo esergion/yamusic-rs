@@ -1,3 +1,9 @@
+> **macOS-форк:** [esergion/yamusic-rs](https://github.com/esergion/yamusic-rs), ветка `macos-support`.
+> macOS-порт развивается самостоятельно в этом форке. Оригинальный проект —
+> [SpolzerMod/yamusic-rs](https://github.com/SpolzerMod/yamusic-rs); его автор не сопровождает macOS-порт.
+> Для macOS используется локальная сборка: [инструкция](#macos-apple-silicon).
+> Ссылки на готовые Windows/Linux-релизы и сведения об исходном проекте ниже относятся к оригиналу.
+
 <div align="center">
 
 <img src="docs/logo.png" width="96" height="96" alt="">
@@ -279,7 +285,7 @@ API Яндекса неофициальный и может меняться б�
 Нужен Rust 1.92 или новее (`rustup update stable`). Дальше на любой системе одинаково:
 
 ```bash
-git clone https://github.com/SpolzerMod/yamusic-rs
+git clone --branch macos-support https://github.com/esergion/yamusic-rs
 cd yamusic-rs
 cargo build --release
 ```
@@ -294,6 +300,10 @@ cargo build --release
 Готовый файл: `target\release\yamusic-rs.exe`.
 
 #### macOS (Apple Silicon)
+
+Ссылка «О приложении» и проверка обновлений в сборках этого форка используют
+`esergion/yamusic-rs`. Готовые macOS-релизы не публикуются: обновление выполняется
+получением исходников ветки `macos-support` и повторной локальной сборкой.
 
 Нужны macOS 13+, Xcode Command Line Tools (`xcode-select --install`) и Rust 1.92+.
 AppKit/MediaPlayer/ServiceManagement подключены через небольшой статический Objective-C мост;
